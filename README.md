@@ -373,11 +373,12 @@ Column(
         );
 ```
 
-Extrayez le code
+Extrayez le code dans une fonction (CTRL + ;)
 
 ## Exo6
 
 Maintenant vous allez faire de meme avec le modèle de recommandation
+
 ```
 Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -448,4 +449,19 @@ Column(
         )
 ```
 
-Mais lors de 
+Mais lors du rafraichissement de la page, une erreur se produit
+Il ne reconnait pas SvgPicture, il faut alors installer le package flutter_svg pour avoir accès à cette fonction
+Ainsi que d'ajouter le path de nos images.
+Pour cela allez dans le fichier pubspeck.yaml et modifier le dependancies: , et le asset:.
+Normalement Flutter fera
+```
+flutter pub get
+```
+Afin d'installer vos dépendances
+
+Une fois fait TADA! vous avez créer une première page en flutter
+
+## Exo Bonus
+
+Maintenant que vous avez créer une première page, créer une deuxième page Setting à votre guise
+Pour changer de page, le Widget navigator doit être utilisé. 
