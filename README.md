@@ -17,10 +17,9 @@ samples, guidance on mobile development, and a full API reference.
 
 # ExerciceTP
 
-Ce tp a pour but de vous présenter Flutter et son utilisation dans le cadre d'une application mobile.
-Attendez la fin de l'exercice 1 avant de lancer la commande prochaine.
-Pour lancer flutter, lancer la commande Flutter run.
-Si vous voulez utiliser un emulateur android ou autre, lancer l'emulateur puis flutter run.
+Ce TP a pour objectif de vous présenter Flutter et son utilisation dans le développement d’applications mobiles.
+Veuillez attendre la fin de l’exercice 1 avant d’exécuter la commande suivante.
+Si vous souhaitez utiliser un émulateur Android ou un autre dispositif virtuel, démarrez d’abord l’émulateur, puis lancez la commande :
 
 ```
 flutter run
@@ -28,8 +27,9 @@ flutter run
 
 ## Exo1:
 
-La premiere étape de cette exercice est de créer une page main.dart dans le dossier lib, c'est dans ce dossier qu'une grande partie se fera
-Après avoir créer cette page, vous allez ajouter le code suivant dans le fichier
+La première étape de cet exercice consiste à créer un fichier main.dart dans le dossier lib. C’est dans ce dossier que vous réaliserez la majorité du travail.
+
+Une fois ce fichier créé, ajoutez-y le code suivant :
 
 ```
 import 'package:flutter/material.dart';
@@ -57,13 +57,17 @@ Voici le début du projet avec la création de votre premier Widget.
 
 ## Exo2:
 
-Une fois que vous avez lancé flutter, une page est apparu et celle-ci est vide.
-Vous aller créer un dossier pages, contenant toutes vos pages.
-Une fois ce dossier créer, ajouter un nouveau fichier dart.
-/!\ Dart utilise une notation spéciale, éviter les majuscules et préferer des _ pour séparer des mots.
+Une fois que vous avez lancé Flutter, une page apparaît : elle est pour l’instant vide.
 
-Une fois votre page créer, ajouter le code suivant /!\ Penser à changer le nom de la classe pour correspondre à celle dans le main.
+Vous allez maintenant créer un dossier pages, qui contiendra l’ensemble de vos différentes pages.
+Après avoir créé ce dossier, ajoutez-y un nouveau fichier Dart.
 
+⚠️ Attention : Dart utilise une convention de nommage particulière.
+Évitez les majuscules dans les noms de fichiers et utilisez plutôt les underscores (_) pour séparer les mots.
+
+Une fois votre page créée, ajoutez le code suivant dans votre fichier.
+
+⚠️ N’oubliez pas de modifier le nom de la classe afin qu’il corresponde à celui utilisé dans main.dart.
 ```
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -73,8 +77,9 @@ class HomePage extends StatefulWidget {
 }
 ```
 
-Vous pouvez aussi le créer rapidement en écrivant stl, et en cliquant sur Flutter StatefulWidget.
-Créer maintenant une nouvelle classe _HomePageState qui étends notre HomePage
+Vous pouvez également créer cette structure plus rapidement en tapant stl puis en sélectionnant Flutter StatefulWidget dans les suggestions.
+
+Créez ensuite une nouvelle classe _HomePageState, qui étendra votre classe HomePage.
 
 ```
 class _HomePageState extends State<HomePage> {
@@ -83,8 +88,9 @@ class _HomePageState extends State<HomePage> {
     }
 }
 ```
-C'est dans ce widget que vous allez créer l'application.
-Vous aller commencer par créer un AppBar dans le Scaffold
+C’est à l’intérieur de ce widget que vous allez construire votre application.
+
+Commencez par ajouter une AppBar dans votre Scaffold.
 
 ```
 return Scaffold(
@@ -103,12 +109,13 @@ Bien maintenant une barre en haut de la page est apparu.
 
 ## Exo3:
 
-A partir de maintenant, essayer de faire le TP en vous aidant de la documentation et si vous n'y arriver vraiment pas, nous vous donner le code
+À partir de maintenant, essayez de réaliser le TP en vous aidant de la documentation.
+Si vous n’y parvenez vraiment pas, nous vous fournirons le code.
 
-Ajoutons des boutons sur cette barre.
-Pour cela vous aller avoir besoin d'utiliser des attributs de appBar telle que leading, et actions.
-Quand au bouton, vous pouvez utiliser le Widget IconButton.
+Ajoutons maintenant des boutons sur la barre d’application.
+Pour cela, vous aurez besoin d’utiliser certains attributs de l’AppBar, comme leading et actions.
 
+Pour créer les boutons, vous pouvez utiliser le widget IconButton.
 ```
 leading:  IconButton(
         icon: const Icon(Icons.home),
@@ -126,21 +133,26 @@ actions: [
 ],
 ```
 
-Maintenant que votre appBar à été créer, vous pouvez l'extraire dans une fonction pour alléger le code contenu dans le build.
-Pour cela, aller sur la ligne appBar, faite (ctrl + ;) et cliquer sur l'icone Extraire méthode.
+Maintenant que votre AppBar a été créée, vous pouvez l’extraire dans une fonction afin d’alléger le code présent dans la méthode build.
+
+Pour cela, placez votre curseur sur la ligne contenant appBar, puis utilisez Ctrl + ; et sélectionnez l’option “Extraire méthode”.
 
 ## Exo 4:
 
-Ajoutez une barre de recherche en dessous de votre appBar.
-Pour cela utiliser l'attribut body de Scaffold et le Widget TextField.
+Ajoutez maintenant une barre de recherche sous votre AppBar.
+Pour cela, utilisez l’attribut body du Scaffold, ainsi que le widget TextField.
 
 ```
 body: TextField()
 ```
-Un champ de texte est apparu, mais celui-ci ne correpond pas a nos attente, il est trop grand.
+Un champ de texte est apparu, mais il ne correspond pas encore à nos attentes : il est trop grand.
 
-Vous allez le modifier en wrappant le TextField avec un Container (CTRL + ;), en mettant le TextField dans l'attribut child:
-Et modifier le margin: du Container      /!\ utilisez le EdgeInsets.only(), pour modifier le margin.
+Pour le modifier, encapsulez le TextField dans un Container (via Ctrl + ;, puis « Wrap with Container »).
+Placez ensuite le TextField dans l’attribut child du Container.
+
+Enfin, ajustez l’apparence du champ en modifiant la propriété margin du Container.
+
+⚠️ Utilisez EdgeInsets.only() pour définir précisément les marges.
 
 ```
 Container(
@@ -148,8 +160,23 @@ Container(
     child: TextField()
 )
 ```
-Ajouter une decoration dans votre TextField afin d'ajouter une icone de loupe au début, un texte par défaut, une barre servant de séparateur pour afficher l'icone de filtre.
-Pour cela vous allez utilisé, une InputDecoration, en modifiant les paramètres hintText: ,  contentPadding: , prefixIcon:, suffixIcon:
+Ajoutez maintenant une décoration à votre TextField afin de :
+
+afficher une icône de loupe au début,
+
+ajouter un texte par défaut (placeholder),
+
+inclure une barre séparatrice pour l’icône de filtre à la fin.
+
+Pour ce faire, utilisez un InputDecoration et modifiez les paramètres suivants :
+
+hintText: pour le texte par défaut,
+
+contentPadding: pour ajuster les espacements internes,
+
+prefixIcon: pour l’icône au début,
+
+suffixIcon: pour l’icône à la fin.
 
 ```
 decoration: InputDecoration(
@@ -158,13 +185,20 @@ decoration: InputDecoration(
               hintText: "Rechercher un objet",
               contentPadding: EdgeInsets.all(15),
               prefixIcon: Icon(Icons.search),
-              suffixIcon: Icon(Incons.filter_alt)
+              suffixIcon: Icon(Icons.filter_alt)
 )
 ```
-Mais comment faire pour ajouter la barre séparatrice?
-Il suffit de modifier suffixIcon: creer un SizedBox, et ajouter un IntrinsicHeight  //Cela permettra une taille constante entre l'icon et le séparateur
-Pour que les objets soit alignés utilisé un Widget appelé Row et en modifiant le mainAxisAlignement:
-Et surtout pour faire ce séparateur, un Widget appelé VerticalDivider existe.
+Pour ajouter la barre séparatrice dans votre TextField :
+
+Dans suffixIcon:, créez un SizedBox.
+
+À l’intérieur, utilisez un IntrinsicHeight pour garantir une taille constante entre l’icône et le séparateur.
+
+Pour aligner correctement les éléments, placez-les dans un Row et ajustez la propriété mainAxisAlignment.
+
+Enfin, pour créer le séparateur vertical, utilisez le widget VerticalDivider.
+
+Ainsi, vous aurez une barre de séparation propre entre votre icône et le reste du contenu.
 ```
  suffixIcon: SizedBox(
                 width: 95,
@@ -186,8 +220,13 @@ Et surtout pour faire ce séparateur, un Widget appelé VerticalDivider existe.
               )
 ```
 
-Très bien, ajoutez maintenant un ombrage à notre Container contenant le TextField
-Modifier decoration: avec une BoxDecoration, lui même en ajoutant un BoxShadow.
+Ajoutez maintenant un ombrage au Container contenant votre TextField.
+
+Pour cela :
+
+Modifiez la propriété decoration: du Container en utilisant un BoxDecoration.
+
+À l’intérieur de ce BoxDecoration, ajoutez un BoxShadow pour créer l’effet d’ombre.
 
 ```
 decoration: BoxDecoration(
@@ -202,8 +241,9 @@ decoration: BoxDecoration(
           ),
 ```
 
-Vous pouvez maintenant extraire le container dans une méthode, pour épurer votre build.
-Vous devez obtenir cette méthode.
+Vous pouvez maintenant extraire le Container contenant le TextField dans une méthode séparée afin d’alléger le code de votre build.
+
+À l’issue de cette opération, vous devriez obtenir une méthode similaire à celle-ci :
 
 ```
 Container _textfield() {
@@ -257,10 +297,21 @@ Container _textfield() {
 
 ## Exo5:
 
-Maintenant, vous allez créer une liste de view permettant de voir plusieurs objets Catégorie dont le modèle est donnée dans libs/models.
-Pour cela regarder le widget LastView.separeted() et modifier l'attribut itemCount et un itemBuilder et dans cet attribut créer des Containers.
-N'oublier pas de créer les catégorie en appelant le modèle.
-Bonne chance
+Maintenant, vous allez créer une liste de vues permettant d’afficher plusieurs objets Catégorie, dont le modèle est fourni dans lib/models.
+
+Pour cela :
+
+Utilisez le widget ListView.separated().
+
+Modifiez les attributs :
+
+itemCount pour définir le nombre d’éléments,
+
+itemBuilder pour créer le contenu de chaque élément.
+
+Dans l’itemBuilder, créez des Container pour chaque catégorie et n’oubliez pas de créer les instances de vos catégories en utilisant le modèle fourni.
+
+Bonne chance !
 
 ```
  void _initInfo(){
@@ -310,7 +361,7 @@ ListView.separated(
             )
 ```
 
-Pour que vous aidez, voici le code complet pour afficher les listes
+Pour vous aidez, voici le code complet pour afficher les listes
 
 ```
 Column(
@@ -373,11 +424,17 @@ Column(
         );
 ```
 
-Extrayez le code dans une fonction (CTRL + ;)
+Vous pouvez maintenant extraire le code de la liste dans une fonction afin d’alléger la méthode build.
+
+Pour cela :
+
+Placez votre curseur sur le bloc de code à extraire.
+
+Appuyez sur Ctrl + ; et sélectionnez “Extraire méthode”.
 
 ## Exo6
 
-Maintenant vous allez faire de meme avec le modèle de recommandation
+Maintenant, vous allez procéder de la même manière pour le modèle de recommandations.
 
 ```
 Column(
@@ -449,19 +506,35 @@ Column(
         )
 ```
 
-Mais lors du rafraichissement de la page, une erreur se produit
-Il ne reconnait pas SvgPicture, il faut alors installer le package flutter_svg pour avoir accès à cette fonction
-Ainsi que d'ajouter le path de nos images.
-Pour cela allez dans le fichier pubspeck.yaml et modifier le dependancies: , et le asset:.
-Normalement Flutter fera
+Lors du rafraîchissement de la page, une erreur peut survenir si Flutter ne reconnaît pas SvgPicture.
+
+Pour résoudre ce problème :
+
+Installez le package flutter_svg pour pouvoir utiliser les images au format SVG.
+
+Ajoutez le chemin de vos images dans le fichier pubspec.yaml :
+
+Modifiez la section dependencies: pour ajouter flutter_svg.
+
+Modifiez la section assets: pour inclure le dossier contenant vos images.
+
+Normalement, Flutter prendra automatiquement en compte ces modifications et vous pourrez utiliser SvgPicture sans erreur.
+
 ```
 flutter pub get
 ```
-Afin d'installer vos dépendances
 
-Une fois fait TADA! vous avez créer une première page en flutter
+🎉 Félicitations !
+Une fois toutes ces étapes terminées, vous avez créé votre première page en Flutter !
 
 ## Exo Bonus
 
-Maintenant que vous avez créer une première page, créer une deuxième page Setting à votre guise
-Pour changer de page, le Widget navigator doit être utilisé. 
+Maintenant que vous avez créé votre première page, créez une deuxième page, par exemple une page Settings, à votre guise.
+
+Pour naviguer entre les pages, utilisez le widget Navigator :
+
+Navigator.push pour aller vers une nouvelle page,
+
+Navigator.pop pour revenir à la page précédente.
+
+Ainsi, vous pourrez passer facilement de votre première page à la page de paramètres et vice-versa.
